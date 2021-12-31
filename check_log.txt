@@ -1,0 +1,7 @@
+项目：默认项目
+logs
+NullPointerException|FileNotFoundException|ClassNotFoundException|ClassCastException|NoSuchMethodException|IndexOutOfBoundsException|ArithmeticException|SQLException|OutOfMemoryError|系统异常请联
+系管理员|拒绝连接|>接口异常|connect timed out|Read timed out|Connection timed out
+http://anso_04.ansosz.com:38080/post
+http://10.36.5.65:1023/metrics/job/prome/instance/
+test_

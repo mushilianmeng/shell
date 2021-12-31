@@ -1,0 +1,9 @@
+69d996a2f013b2f61701762e937b7239  auto.sh
+a16007289aaae305747c99b4b70399eb  boot-deploy.sh
+4127cd13e8acb747374584960e8bdd00  check_log.sh
+62f9d36668a5f386baf8ae7d0321a2d3  init.sh
+2c61bfc979e5887fab840a57a5fc43be  install.sh
+78fc0db32ea3a2e9e25dd04c1bca5458  prometheus_push.sh
+d70e0f1b189a6e993306eced8c09f39c  prometheus_scan.sh
+80b14617d664608788617349313d7bf9  remove.sh
+5302a33d5ae8da021c48752f802ba9e9  update.sh
