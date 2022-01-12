@@ -16,15 +16,22 @@ ssh_link_jk(){
                 while true
                 do
                         ssh -p $remoteshport root@$remotesship "netstat -antp | grep 0.0.0.0:$1"
-                        if [ $? -eq 1 ];then
-                                        ssh_process_id=`ps -ef | grep ssh | grep $1 | awk -F" " '{print $2}'`
-                                        ssh_link_process_id=`ps -ef | grep ssh | grep $1 | awk -F" " '{print $3}'`
-                                        kill $ssh_process_id
+                        if [ $? -eq 0 ];then
+                                        sleep 170
+                        elif [ $? -eq 1 ];then
+                                        ssh_process_id=`ps -ef | grep CnNT | grep $1 | awk -F" " '{print $2}'`
+                                        ssh_link_process_id=`ps -ef | grep CnNT | grep $1 | awk -F" " '{print $3}'`
                                         kill $ssh_link_process_id
-                                        sleep 1
-                                        ssh_link $1 $2 $3 >/dev/null 2>&1 &
+                                        kill $ssh_process_id
+                                        ssh_process_id=`ps -ef | grep CnNT | grep $1 | awk -F" " '{print $2}'`
+                                        ssh_link_process_id=`ps -ef | grep CnNT | grep $1 | awk -F" " '{print $3}'`
+                                        if [[ ! -n $ssh_process_id ]] && [[ ! -n $ssh_link_process_id ]];then
+                                                sleep 1
+                                                ssh_link $1 $2 $3 >/dev/null 2>&1 &
+                                        fi
+                        else
+                                        sleep 2
                         fi
-                        sleep 170
                 done
 }
 ssh_link_jk 1067 127.0.0.1 9091 >/dev/null 2>&1 &

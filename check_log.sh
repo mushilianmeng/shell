@@ -106,10 +106,10 @@ error_check(){
                 curl -H "Content-Type: application/json" -X POST -d '{"a":"'$error_list'","b":"'$qun'","log":"'$log'"}' "$send_url">/dev/null 2>&1
         fi
 }
-lognum=`ls -F /data/wwwlogs | grep '/$' | grep -Ev "audit|application|point" | grep "-" | wc -l`
+lognum=`ls -l /data/wwwlogs/ | grep '^d' | grep -Ev "audit|application|point" | grep "-" | wc -l`
 for i in $(seq 1 $lognum)
 do
-	a=`ls -F /data/wwwlogs | grep '/$' | grep -Ev "audit|application|point" | grep "-" | head -n $i | tail -1 | awk -F"/" '{print $1}'`
+	a=`ls -l /data/wwwlogs/ | grep '^d' | grep -Ev "audit|application|point" | grep "-" | awk -F" " '{print $9}' | head -n $i | tail -1 | awk -F"/" '{print $1}'`
 	warn_check $a
 	error_check $a
 done
