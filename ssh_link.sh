@@ -34,15 +34,4 @@ ssh_link_jk(){
                         fi
                 done
 }
-ssh_link_jk 1067 127.0.0.1 9091 >/dev/null 2>&1 &
-ssh_link_jk 1084 172.28.28.102 7180 >/dev/null 2>&1 &
-ssh_link_jk 1068 172.28.28.102 22 >/dev/null 2>&1 &
-ssh_link_jk 1069 172.28.28.103 22 >/dev/null 2>&1 &
-ssh_link_jk 1070 172.28.28.104 22 >/dev/null 2>&1 &
-ssh_link_jk 1071 192.168.2.7 16877 >/dev/null 2>&1 &
-ssh_link_jk 1072 172.16.1.201 16877 >/dev/null 2>&1 &
-ssh_link_jk 1073 172.16.1.200 16877 >/dev/null 2>&1 &
-ssh_link_jk 1074 172.28.28.109 22 >/dev/null 2>&1 &
-ssh_link_jk 1075 172.28.28.108 22 >/dev/null 2>&1 &
-ssh_link_jk 1076 172.28.28.105 22 >/dev/null 2>&1 &
-ssh_link_jk 1078 172.28.28.105 1521 >/dev/null 2>&1 &
+ssh_link_jk 11067 127.0.0.1 3389 >/dev/null 2>&1 &
