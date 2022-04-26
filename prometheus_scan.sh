@@ -2,7 +2,7 @@
 source /etc/profile
 source ~/.bash_profile
 ip_dizhi=`ip a | grep global | head -1 | awk -F" " '{print $2}' | awk -F"/" '{print $1}'`
-open_port_list=`netstat -antp | grep java | grep LISTEN | awk -F" " '{print $4}' | awk -F":" '{print $4}'`
+open_port_list=`netstat -antp | grep java | grep LISTEN | awk -F" " '{print $4}' | awk -F":" '{print $(NF)}'`
 old_open_port_num=`cat prometheus_list.txt | awk -F":" '{print $3}' | awk -F"/" '{print $1}' | wc -l`
 for b in $(seq 1 $old_open_port_num)
 do
@@ -17,8 +17,8 @@ do
 	status=`curl -s --connect-timeout 10 -m 10 http://$ip_dizhi:$open_port/actuator/prometheus |  grep jvm_classes_loaded | tail -1 | grep application | wc -l`
 	echo "状态为:" $status
 	if [ $status -eq 1 ];then
-		pid=`netstat -antp | grep java | grep LISTEN | grep $open_port | awk -F" " '{print $7}' | awk -F"/" '{print $1}'`
-		application=`ps -ef | grep $pid | grep -v grep | awk -F" " '{print $(NF-0)}' | awk -F"/" '{print $4}'`
+		pid=`netstat -antp | grep java | grep LISTEN | grep $open_port | awk -F" " '{print $(NF)}' | awk -F"/" '{print $1}'`
+		application=`ps -ef | grep $pid | grep -v grep | awk -F" " '{print $(NF)}' | awk -F"/" '{print $(NF)}'`
                 if  [ ! -n "$application" ] ;then
                         application=`curl -s --connect-timeout 1 http://$ip_dizhi:$open_port/actuator/prometheus |  grep jvm_classes_loaded | tail -1 | grep application | awk -F"\"" '{print $2}'`
                 fi
