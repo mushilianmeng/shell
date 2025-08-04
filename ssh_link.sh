@@ -9,7 +9,7 @@ remoteshport=16122 #这里填写远端 ssh port
 ssh_link(){
         while true
         do
-                ssh -o ServerAliveInterval=30 -CnNT -R $1:$2:$3 root@$remotesship -p $remoteshport
+                ssh -o ServerAliveInterval=1 -o ServerAliveCountMax=10 -o TCPKeepAlive=yes -o ExitOnForwardFailure=yes -CnNT -R $1:$2:$3 root@$remotesship -p $remoteshport
         done
 }
 ssh_link_jk(){
